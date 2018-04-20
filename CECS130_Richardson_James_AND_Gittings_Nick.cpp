@@ -6,11 +6,11 @@ using namespace std;
 
 class Nick : public James
 {
-	void game::nickAi_turn(string AiSymbol)
+	void nickAi(string nickAiSymbol)
 	{
 		bool bnickAiChoosing = true;
 	
-		cout << "Ai's turn" << endl;
+		cout << "NickAi's turn" << endl;
 	
 		do
 		{
@@ -25,58 +25,8 @@ class Nick : public James
 			}
 		}while(bnickAiChoosing == true);
 		iTurnCounter++;
-}
-
-void game::check_win()
-{
-	int i,j,k;
-	
-	for(i = 0; i < 3; i++)
-	{
-		//Checking 2D Diagonal
-		if(Cells[i][0][0] == nickAiSymbol && Cells[i][1][1] == nickAiSymbol && Cells[i][2][2] == nickAiSymbol || Cells[i][0][2] == nickAiSymbol && Cells[i][1][1] == nickAiSymbol && Cells[i][2][0] == nickAiSymbol)
-		{
-			inickAiWinCounter++;
-		}
-		
-		//Checking 2D Horizontal
-		for(j = 0; j < 3; j++)
-		{
-			if(Cells[i][j][0] == nickAiSymbol && Cells[i][j][1] == nickAiSymbol && Cells[i][j][2] == nickAiSymbol)
-			{
-				inickAiWinCounter++;
-			}		
-		}
-		//Checking 2D Vertical
-		for(k = 0; k < 3; k++)
-		{
-			if(Cells[i][0][k] == nickAiSymbol && Cells[i][1][k] == nickAiSymbol && Cells[i][2][k] == nickAiSymbol)
-			{
-				inickAiWinCounter++;
-			}
-		}
-	}
-	
-	//Checking 3D Vertical
-	for(j = 0; j < 3; j++)
-	{
-		for(k = 0; k < 3; k++)
-		{
-			if(Cells[0][j][k] == nickAiSymbol && Cells[1][j][k] == nickAiSymbol && Cells[2][j][k] == nickAiSymbol)
-			{
-				inickAiWinCounter++;
-			}
-		}
-	}
-
-	//Checking 3D Diagonal
-	if(Cells[0][0][0] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[2][2][2] == nickAiSymbol || Cells[2][2][0] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[0][1][2] == nickAiSymbol || Cells[0][2][2] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[2][0][0] == nickAiSymbol || Cells[0][2][1] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[2][0][2] == nickAiSymbol )
-	{
-		inickAiWinCounter++;
-	}
-}
-
 };
+
 class James : public Nick
 {
 	public:
@@ -85,7 +35,7 @@ class James : public Nick
 	string G7; string G8; string G9;string H7; string H8; string H9;string I7; string I8; string I9;string Quad;
 	int z1,z2,z3,z4,z5,z6,z7,z8,z9,z10,z11,z12,z13,z14,z15,z16,z17,z18,z19,z20,z21,z22,z23,z24,z25,z26,z27,z28,z29,z30,z31,z32,z33,z34,z35,z36,z37,z38,z39,z40,z41,z42,z43,z44,z45,z46,z47,z48,z49;
 	int JamesScore = 0;
-int computer()
+int jamesAi()
 {
 		while(x != 1)
 		{
@@ -284,7 +234,7 @@ int computer()
 		}
 	x = 0;
 }
-int Winner()
+int check_jamesAiwin()
 {
 	if((A1 == "X" || A1 == "O")&& A1 == A2 && A2 == A3 && z1 != 1)
 	{
@@ -644,7 +594,8 @@ int Winner()
 		z45 = 1;
 		}
 	}
-	if((A2 == "X" || A2 == "O")&&A2 == E5 && E5 == I8 && z46 != 1){
+	if((A2 == "X" || A2 == "O")&&A2 == E5 && E5 == I8 && z46 != 1)
+	{
 		if(A2 == "O")
 		{
 		JamesScore++;
@@ -676,42 +627,114 @@ int Winner()
 		}
 	}
 }
+
+// Checks Nick Ai wins with for loop through arrays
+void check_nickAiwin()
+{
+	int i,j,k;
+	
+	for(i = 0; i < 3; i++)
+	{
+		//Checking 2D Diagonal
+		if(Cells[i][0][0] == nickAiSymbol && Cells[i][1][1] == nickAiSymbol && Cells[i][2][2] == nickAiSymbol || Cells[i][0][2] == nickAiSymbol && Cells[i][1][1] == nickAiSymbol && Cells[i][2][0] == nickAiSymbol)
+		{
+			inickAiWinCounter++;
+		}
+		
+		//Checking 2D Horizontal
+		for(j = 0; j < 3; j++)
+		{
+			if(Cells[i][j][0] == nickAiSymbol && Cells[i][j][1] == nickAiSymbol && Cells[i][j][2] == nickAiSymbol)
+			{
+				inickAiWinCounter++;
+			}		
+		}
+		//Checking 2D Vertical
+		for(k = 0; k < 3; k++)
+		{
+			if(Cells[i][0][k] == nickAiSymbol && Cells[i][1][k] == nickAiSymbol && Cells[i][2][k] == nickAiSymbol)
+			{
+				inickAiWinCounter++;
+			}
+		}
+	}
+	
+	//Checking 3D Vertical
+	for(j = 0; j < 3; j++)
+	{
+		for(k = 0; k < 3; k++)
+		{
+			if(Cells[0][j][k] == nickAiSymbol && Cells[1][j][k] == nickAiSymbol && Cells[2][j][k] == nickAiSymbol)
+			{
+				inickAiWinCounter++;
+			}
+		}
+	}
+
+	//Checking 3D Diagonal
+	if(Cells[0][0][0] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[2][2][2] == nickAiSymbol || Cells[2][2][0] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[0][1][2] == nickAiSymbol || Cells[0][2][2] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[2][0][0] == nickAiSymbol || Cells[0][2][1] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[2][0][2] == nickAiSymbol )
+	{
+		inickAiWinCounter++;
+	}
+}
+
+void Winner()
+{
+	if (
+}
+
 };
 
 int main()
 {
-	int JamesWin,NickWin;int JamesScore = 0; int NickScore = 0;
+	int JamesWin, NickWin;
+	int JamesScore = 0; 
+	int NickScore = 0;
 	int P1,Play,GameNumber = 1;
+	
 	string answer;
 	James Jam;
+	Nick Nik;
+	
 	cout<<"Welcome to Tic-Tac-Toe"<<endl;
 	cout<<"Would you like to play a tournament? Y/N"<<endl;
 	cin>>answer;
+	
 	while(answer != "N" || answer != "n")
 	{
 		while(GameNumber != 10)
 		{
 			srand((unsigned)time(0));
 			P1 = (rand() % 2);
+			
 			cout<<"Game "<<GameNumber<<" being played."<<endl;
+			
 		while (Play != 27)
 		{
 			if(P1 == 0||P1 == 2||P1 == 4||P1 == 6||P1 == 8||P1 == 10||P1 == 12||P1 ==14||P1 ==16||P1 ==18||P1 ==20||P1 ==22||P1 ==24||P1 ==26||P1 ==28)
 			{
 				cout<<"Nick's Turn"<<endl;
-				//Nick AI
+				
 			}
 			if(P1 == 1||P1 == 3||P1 == 5||P1 == 7||P1 == 9||P1 == 11||P1 ==13||P1 ==15||P1 ==17||P1 ==19||P1 ==21||P1 ==23||P1 ==25||P1 ==27||P1 ==29)
 			{
 				cout<<"James' Turn"<<endl;
-				Jam.computer();
+				Jam.jamesAi();
 			}
+			
+			//Checks wins of both Ai and returns a winner of the game
+			Jam.check_jamesAiwin();
+			Nik.check_nickAiwin();
 			Jam.Winner();
+			
+			/*
 			P1++;
 			Play++;
-			}
+			
 			cout<<"Game Over"<<endl;
-			if(JamesScore > NickScore){
+			
+			if(JamesScore > NickScore)
+			{
 				cout<<"James wins game "<<GameNumber<<endl;
 				JamesWin++;
 			}
@@ -720,9 +743,12 @@ int main()
 				cout<<"Nick wins game "<<GameNumber<<endl;
 				NickWin++;
 			}
-			GameNumber++;	
+			GameNumber++;*/
 	}
+	
 	cout<<"Tournament finished"<<endl;
+	
+	//Checks winner of 10 games
 	if(NickWin > JamesWin)
 	{
 		cout<<"Nick wins the tournament "<<NickWin<<"to "<<JamesWin<<endl;
@@ -731,6 +757,6 @@ int main()
 	{
 		cout<<"James wins the tournament "<<JamesWin<<"to "<<NickWin<<endl;
 	}
-}
-return 0;
+
+	return 0;
 }
