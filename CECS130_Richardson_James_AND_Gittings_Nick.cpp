@@ -4,12 +4,13 @@
 #include <time.h>
 using namespace std;
 
-class Nick : public James
+//Partner's Class
+class Nick
 {
 	public:
 		string nickAiSymbol = "X";
 	
-		void nickAi(string nickAiSymbol)
+		void nickAi(string nickAiSymbol, int GameCounter)
 		{
 			bool bnickAiChoosing = true;
 
@@ -21,16 +22,16 @@ class Nick : public James
 				int j = (rand() % 3);
 				int k = (rand() % 3);
 
-				if(Cells[i][j][k] != nickAiSymbol && Cells[i][j][k] != jamesAiSymbol)
+				if(Cells[i][j][k] != nickAiSymbol && Cells[i][j][k] != "O")
 				{
 					Cells[i][j][k] = nickAiSymbol;
 					bnickAiChoosing = false;
 				}
 			}while(bnickAiChoosing == true);
-			iTurnCounter++;
 		}
 };
 
+//Inheriting Partner's Class
 class James : public Nick
 {
 	public:
@@ -700,16 +701,19 @@ class James : public Nick
 		}
 
 		//Checks winner of each game
-		void Winner(int aicounter1, int aicounter2)
+		void Winner(int aicounter1, int aicounter2, int aiwin1, int aiwin2, int GameCounter)
 		{
 			if(aicounter1 > aicounter2)
 			{
 				cout << "NickAi Wins" << endl;	
+				aiwin1++
 			}
 			else
 			{
 				cout << "JamesAi Wins" << endl;
+				aiwin2++
 			}
+			GameCounter++
 		}
 		
 		//Checks winner of 10 games
@@ -722,6 +726,10 @@ class James : public Nick
 			if(JamesWin > NickWin)
 			{
 				cout<<"James wins the tournament "<<JamesWin<<"to "<<NickWin<<endl;
+			}
+			else
+			{
+				cout << "Error" << endl;
 			}
 		}
 };
@@ -748,45 +756,41 @@ int main()
 			P1 = (rand() % 2);
 			
 			cout<<"Game "<<GameNumber<<" being played."<<endl;
-			
+		//Plays a game	
 		while (Play != 27)
 		{
-			if(P1 == 0||P1 == 2||P1 == 4||P1 == 6||P1 == 8||P1 == 10||P1 == 12||P1 ==14||P1 ==16||P1 ==18||P1 ==20||P1 ==22||P1 ==24||P1 ==26||P1 ==28)
+			if(P1 == 0)
 			{
-				cout<<"Nick's Turn"<<endl;
+				cout << "NickAi goes first!" << endl;
+				Jam.nickAi();
+				Jam.
+				Jam.check_jamesAiwin();
+				Jam.check_nickAiwin();
+				Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
 				
 			}
-			if(P1 == 1||P1 == 3||P1 == 5||P1 == 7||P1 == 9||P1 == 11||P1 ==13||P1 ==15||P1 ==17||P1 ==19||P1 ==21||P1 ==23||P1 ==25||P1 ==27||P1 ==29)
+			if(P1 == 1)
 			{
-				cout<<"James' Turn"<<endl;
+				cout<<"JamesAi goes first!" <<endl;
 				Jam.jamesAi();
+				Jam.check_jamesAiwin();
+				Jam.check_nickAiwin();
+				Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
 			}
 			
 			//Checks both Ai's symbols and returns a winner of the game
 			Jam.check_jamesAiwin();
 			Jam.check_nickAiwin();
-			Jam.Winner(NickScore, JamesScore);
+			Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
 			
-			P1++;
+			//
 			Play++;
 			
 			cout<<"Game Over"<<endl;
-			
-			if(JamesScore > NickScore)
-			{
-				cout<<"James wins game "<<GameNumber<<endl;
-				JamesWin++;
-			}
-			if(NickScore > JamesScore)
-			{
-				cout<<"Nick wins game "<<GameNumber<<endl;
-				NickWin++;
-			}
-			GameNumber++;
 	}
 	
 	cout<<"Tournament finished"<<endl;
-	
+
 	Jam.Victor(NickWin, JamesWin);
 
 	return 0;
