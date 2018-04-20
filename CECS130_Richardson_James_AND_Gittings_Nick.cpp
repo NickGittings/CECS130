@@ -7,19 +7,16 @@ using namespace std;
 class Nick{
 	void game::ai_turn(string AiSymbol)
 {
-	string ai_choice;
 	bool bAiChoosing = true;
 	
 	cout << "Ai's turn" << endl;
 	
-	//Ai choses random string in array Cells to check if used and if not then repeats random till one is found
 	do
 	{
 		int i = (rand() % 3);
 		int j = (rand() % 3);
 		int k = (rand() % 3);
 
-		//Change to your nasty strings ill just use random cuz im too lazy to actually make true ai
 		if(Cells[i][j][k] != PlayerSymbol && Cells[i][j][k] != AiSymbol)
 		{
 			Cells[i][j][k] = AiSymbol;
@@ -29,7 +26,6 @@ class Nick{
 	iTurnCounter++;
 }
 
-//You prob don't wanna use this
 void game::check_win()
 {
 	int i,j,k;
@@ -53,9 +49,9 @@ void game::check_win()
 		//Checking 2D Vertical
 		for(k = 0; k < 3; k++)
 		{
-			if(Cells[i][0][k] == PlayerSymbol && Cells[i][1][k] == PlayerSymbol && Cells[i][2][k] == PlayerSymbol)
+			if(Cells[i][0][k] == NickSymbol && Cells[i][1][k] == NickSymbol && Cells[i][2][k] == NickSymbol)
 			{
-				iPlayerWinCounter++;
+				iNickWinCounter++;
 			}
 		}
 	}
@@ -76,51 +72,6 @@ void game::check_win()
 	if(Cells[0][0][0] == PlayerSymbol && Cells[1][1][1] == PlayerSymbol && Cells[2][2][2] == PlayerSymbol || Cells[2][2][0] == PlayerSymbol && Cells[1][1][1] == PlayerSymbol && Cells[0][1][2] == PlayerSymbol || Cells[0][2][2] == PlayerSymbol && Cells[1][1][1] == PlayerSymbol && Cells[2][0][0] == PlayerSymbol || Cells[0][2][1] == PlayerSymbol && Cells[1][1][1] == PlayerSymbol && Cells[2][0][2] == PlayerSymbol )
 	{
 		iPlayerWinCounter++;
-	}
-	
-	/* Ai Check */
-	for(i = 0; i < 3; i++)
-	{
-		//Checking 2D Diagonal
-		if(Cells[i][0][0] == AiSymbol && Cells[i][1][1] == AiSymbol && Cells[i][2][2] == AiSymbol || Cells[i][0][2] == AiSymbol && Cells[i][1][1] == AiSymbol && Cells[i][2][0] == AiSymbol)
-		{
-			iAiWinCounter++;
-		}
-		
-		//Checking 2D Horizontal
-		for(j = 0; j < 3; j++)
-		{
-			if(Cells[i][j][0] == AiSymbol && Cells[i][j][1] == AiSymbol && Cells[i][j][2] == AiSymbol)
-			{
-				iPlayerWinCounter++;
-			}		
-		}
-		//Checking 2D Vertical
-		for(k = 0; k < 3; k++)
-		{
-			if(Cells[i][0][k] == AiSymbol && Cells[i][1][k] == AiSymbol && Cells[i][2][k] == AiSymbol)
-			{
-				iAiWinCounter++;
-			}
-		}
-	}
-	
-	//Checking 3D Vertical
-	for(j = 0; j < 3; j++)
-	{
-		for(k = 0; k < 3; k++)
-		{
-			if(Cells[0][j][k] == AiSymbol && Cells[1][j][k] == AiSymbol && Cells[2][j][k] == AiSymbol)
-			{
-				iAiWinCounter++;
-			}
-		}
-	}
-
-	//Checking 3D Diagonal
-	if(Cells[0][0][0] == AiSymbol && Cells[1][1][1] == AiSymbol && Cells[2][2][2] == AiSymbol || Cells[2][2][0] == AiSymbol && Cells[1][1][1] == AiSymbol && Cells[0][1][2] == AiSymbol || Cells[0][2][2] == AiSymbol && Cells[1][1][1] == AiSymbol && Cells[2][0][0] == AiSymbol || Cells[0][2][1] == AiSymbol && Cells[1][1][1] == AiSymbol && Cells[2][0][2] == AiSymbol )
-	{
-		iAiWinCounter++;
 	}
 	
 	//Display Win/Loss
