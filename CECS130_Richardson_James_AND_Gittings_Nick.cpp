@@ -4,26 +4,27 @@
 #include<time.h>
 using namespace std;
 
-class Nick : public James{
-	void game::nickAi_turn(string AiSymbol)
+class Nick : public James
 {
-	bool bnickAiChoosing = true;
-	
-	cout << "Ai's turn" << endl;
-	
-	do
+	void game::nickAi_turn(string AiSymbol)
 	{
-		int i = (rand() % 3);
-		int j = (rand() % 3);
-		int k = (rand() % 3);
-
-		if(Cells[i][j][k] != nickAiSymbol && Cells[i][j][k] != jamesAiSymbol)
+		bool bnickAiChoosing = true;
+	
+		cout << "Ai's turn" << endl;
+	
+		do
 		{
-			Cells[i][j][k] = nickAiSymbol;
-			bnickAiChoosing = false;
-		}
-	}while(bnickAiChoosing == true);
-	iTurnCounter++;
+			int i = (rand() % 3);
+			int j = (rand() % 3);
+			int k = (rand() % 3);
+
+			if(Cells[i][j][k] != nickAiSymbol && Cells[i][j][k] != jamesAiSymbol)
+			{
+				Cells[i][j][k] = nickAiSymbol;
+				bnickAiChoosing = false;
+			}
+		}while(bnickAiChoosing == true);
+		iTurnCounter++;
 }
 
 void game::check_win()
@@ -76,15 +77,18 @@ void game::check_win()
 }
 
 };
-class James : public Converter{
+class James : public Nick
+{
 	public:
 	int Play,P1,Cchoice,Pchoice,End,x,confused;
 	string A1;string A2;string A3;string B1;string B2;string B3;string C1;string C2;string C3;string D4;string D5;string D6;string E4;string E5;string E6;string F4;string F5;string F6;
 	string G7; string G8; string G9;string H7; string H8; string H9;string I7; string I8; string I9;string Quad;
 	int z1,z2,z3,z4,z5,z6,z7,z8,z9,z10,z11,z12,z13,z14,z15,z16,z17,z18,z19,z20,z21,z22,z23,z24,z25,z26,z27,z28,z29,z30,z31,z32,z33,z34,z35,z36,z37,z38,z39,z40,z41,z42,z43,z44,z45,z46,z47,z48,z49;
 	int JamesScore = 0;
-int computer(){
-		while(x != 1){
+int computer()
+{
+		while(x != 1)
+		{
 				Cchoice = (rand()%27);
 				if(E5.empty()){Cchoice = 14;}
 				switch(Cchoice){
