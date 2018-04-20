@@ -719,11 +719,11 @@ class James : public Nick
 		//Checks winner of 10 games
 		void Victor(int aicounter1, int aicounter2)
 		{
-			if(NickWin > JamesWin)
+			if(aicounter1 > aicounter2)
 			{
 				cout<<"Nick wins the tournament "<<NickWin<<"to "<<JamesWin<<endl;
 			}
-			if(JamesWin > NickWin)
+			else if(aicounter2 > aicounter1)
 			{
 				cout<<"James wins the tournament "<<JamesWin<<"to "<<NickWin<<endl;
 			}
@@ -767,7 +767,7 @@ int main()
 				Jam.check_jamesAiwin();
 				Jam.check_nickAiwin();
 				Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
-				
+				Play++;
 			}
 			if(P1 == 1)
 			{
@@ -776,15 +776,13 @@ int main()
 				Jam.check_jamesAiwin();
 				Jam.check_nickAiwin();
 				Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
+				Play++;
 			}
 			
 			//Checks both Ai's symbols and returns a winner of the game
 			Jam.check_jamesAiwin();
 			Jam.check_nickAiwin();
 			Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
-			
-			//
-			Play++;
 			
 			cout<<"Game Over"<<endl;
 	}
