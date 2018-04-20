@@ -4,9 +4,11 @@
 #include <time.h>
 using namespace std;
 
-class Nick
+class Nick : public James
 {
 	public:
+		string nickAiSymbol = "X";
+	
 		void nickAi(string nickAiSymbol)
 		{
 			bool bnickAiChoosing = true;
@@ -35,204 +37,217 @@ class James : public Nick
 
 		int Play,P1,Cchoice,Pchoice,End,x,confused;
 		
-		string A1;string A2;string A3;string B1;string B2;string B3;string C1;string C2;string C3;string D4;string D5;string D6;string E4;string E5;string E6;string F4;string F5;string F6;
+		string jamesAiSymbol = "O";
+		
+		string A1;string A2;string A3;string B1;string B2;string B3;string C1;string C2;string C3;string D4;string D5;
+		string D6;string E4;string E5;string E6;string F4;string F5;string F6;
 		string G7; string G8; string G9;string H7; string H8; string H9;string I7; string I8; string I9;string Quad;
 
 		int z1,z2,z3,z4,z5,z6,z7,z8,z9,z10,z11,z12,z13,z14,z15,z16,z17,z18,z19,z20,z21,z22,z23,z24,z25,z26,z27,z28,z29,z30,z31,z32,z33,z34,z35,z36,z37,z38,z39,z40,z41,z42,z43,z44,z45,z46,z47,z48,z49;
 		int JamesScore = 0;
+		
+		void create_board()
+		{
+			
+		}
 
-		int jamesAi()
+		int jamesAi(jamesAiSymbol)
 		{
 				while(x != 1)
 				{
 						Cchoice = (rand()%27);
-						if(E5.empty()){Cchoice = 14;}
+						
+						if(E5.empty())
+						{
+							Cchoice = 14;
+						}
+						
 						switch(Cchoice){
 							case 1:
 								if(A1.empty())
 								{
-									A1 = "O";
+									A1 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 2: 
 								if(A2.empty())
 								{
-									A2 = "O";
+									A2 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 3:
 								if(A3.empty())
 								{
-									A3 = "O";
+									A3 = jamesAiSymbol;
 									x = 1;
 									break;
 							}
 							case 4: 
 								if(B1.empty())
 								{
-									B1 = "O";
+									B1 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 5:
 								if(B2.empty())
 								{
-									B2 = "O";
+									B2 = jamesAiSymbol;
 									x = 1;
 									break;
 								}	
 							case 6:
 								if(B3.empty()){
-									B3 = "O";
+									B3 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 7:
 								if(C1.empty())
 								{
-									C1 = "O";
+									C1 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 8:
 								if(C2.empty())
 								{
-									C2 = "O";
+									C2 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 9:
 								if(C3.empty())
 								{
-									C3 = "O";
+									C3 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 10:
 								if(D4.empty())
 								{
-									D4 = "O";
+									D4 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 11:
 								if(D5.empty())
 								{
-									D5 = "O";
+									D5 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 12:
 								if(D6.empty())
 								{
-									D6 = "O";
+									D6 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 13:
 								if(E4.empty())
 								{
-									E4 = "O";
+									E4 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 14:
 								if(E5.empty())
 								{
-									E5 = "O";
+									E5 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 15:
 								if(E6.empty())
 								{
-									E6 = "O";
+									E6 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 16:
 								if(F4.empty())
 								{
-									F4 = "O";
+									F4 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 17:
 								if(F5.empty())
 								{
-									F5 = "O";
+									F5 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 18:
 								if(F6.empty())
 								{
-									F6 = "O";
+									F6 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 19:
 								if(G7.empty())
 								{
-									G7 = "O";
+									G7 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 20:
 								if(G8.empty())
 								{
-									G8 = "O";
+									G8 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 21:
 								if(G9.empty())
 								{
-									G9 = "O";
+									G9 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 22:
 								if(H7.empty())
 								{
-									H7 = "O";
+									H7 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 23:
 								if(H8.empty())
 								{
-									H8 = "O";
+									H8 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 24:
 								if(H9.empty())
 								{
-									H9 = "O";
+									H9 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 25:
 								if(I7.empty())
 								{
-									I7 = "O";
+									I7 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 26:
 								if(I8.empty())
 								{
-									I8 = "O";
+									I8 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
 							case 27:
 								if(I9.empty())
 								{
-									I9 = "O";
+									I9 = jamesAiSymbol;
 									x = 1;
 									break;
 								}
@@ -684,11 +699,31 @@ class James : public Nick
 			}
 		}
 
-		void Winner()
+		//Checks winner of each game
+		void Winner(int aicounter1, int aicounter2)
 		{
-			if (
+			if(aicounter1 > aicounter2)
+			{
+				cout << "NickAi Wins" << endl;	
+			}
+			else
+			{
+				cout << "JamesAi Wins" << endl;
+			}
 		}
-
+		
+		//Checks winner of 10 games
+		void Victor(int aicounter1, int aicounter2)
+		{
+			if(NickWin > JamesWin)
+			{
+				cout<<"Nick wins the tournament "<<NickWin<<"to "<<JamesWin<<endl;
+			}
+			if(JamesWin > NickWin)
+			{
+				cout<<"James wins the tournament "<<JamesWin<<"to "<<NickWin<<endl;
+			}
+		}
 };
 
 int main()
@@ -700,7 +735,6 @@ int main()
 	
 	string answer;
 	James Jam;
-	Nick Nik;
 	
 	cout<<"Welcome to Tic-Tac-Toe"<<endl;
 	cout<<"Would you like to play a tournament? Y/N"<<endl;
@@ -728,12 +762,11 @@ int main()
 				Jam.jamesAi();
 			}
 			
-			//Checks wins of both Ai and returns a winner of the game
+			//Checks both Ai's symbols and returns a winner of the game
 			Jam.check_jamesAiwin();
-			Nik.check_nickAiwin();
-			Jam.Winner();
+			Jam.check_nickAiwin();
+			Jam.Winner(NickScore, JamesScore);
 			
-			/*
 			P1++;
 			Play++;
 			
@@ -749,20 +782,12 @@ int main()
 				cout<<"Nick wins game "<<GameNumber<<endl;
 				NickWin++;
 			}
-			GameNumber++;*/
+			GameNumber++;
 	}
 	
 	cout<<"Tournament finished"<<endl;
 	
-	//Checks winner of 10 games
-	if(NickWin > JamesWin)
-	{
-		cout<<"Nick wins the tournament "<<NickWin<<"to "<<JamesWin<<endl;
-	}
-	if(JamesWin > NickWin)
-	{
-		cout<<"James wins the tournament "<<JamesWin<<"to "<<NickWin<<endl;
-	}
+	Jam.Victor(NickWin, JamesWin);
 
 	return 0;
 }
