@@ -52,7 +52,7 @@ class James : public Nick
 			
 		}
 
-		int jamesAi(jamesAiSymbol)
+		void jamesAi(jamesAiSymbol)
 		{
 				while(x != 1)
 				{
@@ -256,7 +256,7 @@ class James : public Nick
 				}
 			x = 0;
 		}
-		int check_jamesAiwin()
+		void check_jamesAiwin()
 		{
 			if((A1 == "X" || A1 == "O")&& A1 == A2 && A2 == A3 && z1 != 1)
 			{
@@ -750,45 +750,43 @@ int main()
 	
 	while(answer != "N" || answer != "n")
 	{
+		//Plays a tournament
 		while(GameNumber != 10)
 		{
 			srand((unsigned)time(0));
 			P1 = (rand() % 2);
 			
 			cout<<"Game "<<GameNumber<<" being played."<<endl;
-		//Plays a game	
-		while (Play != 27)
-		{
-			if(P1 == 0)
+			//Plays a game	
+			while (Play != 27)
 			{
-				cout << "NickAi goes first!" << endl;
-				Jam.nickAi();
-				Jam.
-				Jam.check_jamesAiwin();
-				Jam.check_nickAiwin();
-				Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
-				Play++;
-			}
-			if(P1 == 1)
-			{
-				cout<<"JamesAi goes first!" <<endl;
-				Jam.jamesAi();
-				Jam.check_jamesAiwin();
-				Jam.check_nickAiwin();
-				Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
-				Play++;
-			}
+				if(P1 == 0)
+				{
+					cout << "NickAi goes first!" << endl;
+					Jam.nickAi();
+					Play++;
+					Jam.jamesAi();
+					Play++;
+				}
 			
+				if(P1 == 1)
+				{
+					cout<<"JamesAi goes first!" <<endl;
+					Jam.jamesAi();
+					Play++;
+					Jam.nickAi();
+					Play++;
+				}
+			}
 			//Checks both Ai's symbols and returns a winner of the game
 			Jam.check_jamesAiwin();
 			Jam.check_nickAiwin();
 			Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
-			
-			cout<<"Game Over"<<endl;
+			cout<<"Game " << GameNumber << " Over"<<endl;
+			Play = 0;
+		}
 	}
-	
 	cout<<"Tournament finished"<<endl;
-
 	Jam.Victor(NickWin, JamesWin);
 
 	return 0;
