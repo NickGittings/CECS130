@@ -4,12 +4,14 @@
 #include <time.h>
 using namespace std;
 
+int i,j,k;
+string Cells[3][3][3];
 //Partner's Class
 class Nick
 {
 	public:
 	
-		void nickAi(string nickAiSymbol)
+/*		void nickAi(string nickAiSymbol)
 		{
 			bool bnickAiChoosing = true;
 
@@ -17,25 +19,28 @@ class Nick
 			{
 				int i = (rand() % 3);
 			}while(bnickAiChoosing == true);
-		}
-	void game::ai_turn(string AiSymbol)
+		} */
+	void AiTurn()
 {
 	string ai_choice;
+	string AiSymbol = "X";
+	string PlayerSymbol = "O";
+	int iTurnCounter;
 	bool bAiChoosing = true;
 	
-	cout << "Ai's turn" << endl;
+//	cout << "Ai's turn" << endl;
 	
 	//Ai choses random string in array Cells to check if used and if not then repeats random till one is found
 	do
 	{
 		int i = (rand() % 3);
-		int j = (rand() % 3);
+		int J = (rand() % 3);
 		int k = (rand() % 3);
 
 		//Change to your nasty strings ill just use random cuz im too lazy to actually make true ai
-		if(Cells[i][j][k] != PlayerSymbol && Cells[i][j][k] != AiSymbol)
+		if(Cells[i][J][k] != PlayerSymbol && Cells[i][J][k] != AiSymbol)
 		{
-			Cells[i][j][k] = AiSymbol;
+			Cells[i][J][k] = AiSymbol;
 			bAiChoosing = false;
 		}
 	}while(bAiChoosing == true);
@@ -44,7 +49,13 @@ class Nick
 };
 class converter : public Nick // converts arrays into strings
 {
-	void converter(){
+	public:
+	string A1;string A2;string A3;string B1;string B2;string B3;string C1;string C2;string C3;
+	string D4;string D5;string D6;string E4;string E5;string E6;string F4;string F5;string F6;
+	string G7;string G8;string G9;string H7;string H8;string H9;string I7;string I8;string I9;
+		
+	void convert ()
+	{
 	A1 = Cells[0][0][0];
 	A2 = Cells[1][0][0];
 	A3 = Cells[2][0][0];
@@ -76,7 +87,7 @@ class converter : public Nick // converts arrays into strings
 };
 
 //Inheriting Partner's Class
-class James : public Nick
+class James : public converter
 {
 	public:
 
@@ -91,14 +102,10 @@ class James : public Nick
 		int z1,z2,z3,z4,z5,z6,z7,z8,z9,z10,z11,z12,z13,z14,z15,z16,z17,z18,z19,z20,z21,z22,z23,z24,z25,z26,z27,z28,z29,z30,z31,z32,z33,z34,z35,z36,z37,z38,z39,z40,z41,z42,z43,z44,z45,z46,z47,z48,z49;
 		int JamesScore = 0;
 		
-		void create_board()
-		{
-			
-		}
 
 		void jamesAi(string jamesAiSymbol)
 		{
-				while(x != 1)
+				while(x != 1) // James Ai
 				{
 						Cchoice = (rand()%27);
 						
@@ -300,7 +307,7 @@ class James : public Nick
 				}
 			x = 0;
 		}
-		void check_jamesAiwin(int JamesScore)
+		void check_AiScore() //Give points
 		{
 			if((A1 == "X" || A1 == "O")&& A1 == A2 && A2 == A3 && z1 != 1)
 			{
@@ -693,61 +700,12 @@ class James : public Nick
 				}
 			}
 		}
-		
-		// Checks Nick Ai wins with for loop through arrays
-		/*void check_nickAiwin(int inickAiWinCounter, string nickAiSymbol)
-		{
-			int i,j,k;
-
-			for(i = 0; i < 3; i++)
-			{
-				//Checking 2D Diagonal
-				if(Cells[i][0][0] == nickAiSymbol && Cells[i][1][1] == nickAiSymbol && Cells[i][2][2] == nickAiSymbol || Cells[i][0][2] == nickAiSymbol && Cells[i][1][1] == nickAiSymbol && Cells[i][2][0] == nickAiSymbol)
-				{
-					inickAiWinCounter++;
-				}
-
-				//Checking 2D Horizontal
-				for(j = 0; j < 3; j++)
-				{
-					if(Cells[i][j][0] == nickAiSymbol && Cells[i][j][1] == nickAiSymbol && Cells[i][j][2] == nickAiSymbol)
-					{
-						inickAiWinCounter++;
-					}		
-				}
-				//Checking 2D Vertical
-				for(k = 0; k < 3; k++)
-				{
-					if(Cells[i][0][k] == nickAiSymbol && Cells[i][1][k] == nickAiSymbol && Cells[i][2][k] == nickAiSymbol)
-					{
-						inickAiWinCounter++;
-					}
-				}
-			}
-
-			//Checking 3D Vertical
-			for(j = 0; j < 3; j++)
-			{
-				for(k = 0; k < 3; k++)
-				{
-					if(Cells[0][j][k] == nickAiSymbol && Cells[1][j][k] == nickAiSymbol && Cells[2][j][k] == nickAiSymbol)
-					{
-						inickAiWinCounter++;
-					}
-				}
-			}
-
-			//Checking 3D Diagonal
-			if(Cells[0][0][0] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[2][2][2] == nickAiSymbol || Cells[2][2][0] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[0][1][2] == nickAiSymbol || Cells[0][2][2] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[2][0][0] == nickAiSymbol || Cells[0][2][1] == nickAiSymbol && Cells[1][1][1] == nickAiSymbol && Cells[2][0][2] == nickAiSymbol )
-			{
-				inickAiWinCounter++;
-			}
-		}*/
 
 		//Checks winner of each game
-		void Winner(int aicounter1, int aicounter2, int aiwin1, int aiwin2, int GameCounter)
+		void Winner()
 		{
-			if(aicounter1 > aicounter2)
+			int aicounter1,aiwin1,JamesWin;
+			if(aicounter1 > JamesScore)
 			{
 				cout << "Nick Wins" << endl;	
 				aiwin1++;
@@ -755,26 +713,68 @@ class James : public Nick
 			else
 			{
 				cout << "James Wins" << endl;
-				aiwin2++;
+				JamesWin++;
 			}
-			GameCounter++;
 		}
 		
 		//Checks winner of 10 games
-		void Victor(int aiwins1, int aiwins2)
+		void Victor()
 		{
-			if(aiwins1 > aiwins2)
+			int aiwins1 = 0, JamesWin;
+			if(aiwins1 > JamesWin)
 			{
-				cout<<"Nick wins the tournament "<< aiwins1 <<"to "<< aiwins2 <<endl;
+				cout<<"Nick wins the tournament "<< aiwins1 <<"to "<< JamesWin <<endl;
 			}
-			else if(aiwins2 > aiwins1)
+			else if(JamesWin > aiwins1)
 			{
-				cout<<"James wins the tournament "<< aiwins2 <<"to "<< aiwins1 <<endl;
+				cout<<"James wins the tournament "<< JamesWin <<"to "<< aiwins1 <<endl;
 			}
 			else
 			{
 				cout << "Error" << endl;
 			}
+		}
+		
+		void Erase()
+		{
+			int i,j,k;
+		A1 = "";
+		A2 = "";
+		A3 = "";
+		B1 = "";
+		B2 = "";
+		B3 = "";
+		C1 = "";
+		C2 = "";	
+		C3 = "";
+		D4 = "";
+		D5 = "";
+		D6 = "";
+		E4 = "";
+		E5 = "";
+		E6 = "";
+		F4 = "";
+		F5 = "";
+		F6 = "";
+		G7 = "";
+		G8 = "";
+		G9 = "";
+		H7 = "";
+		H8 = "";
+		H9 = "";
+		I7 = "";
+		I8 = "";
+		I9 = "";
+		for(k = 0; k < 3; k++)
+		{
+			for(j = 0; j < 3; j++)
+			{
+				for(i = 0; i < 3; i++)
+				{
+					Cells[i][j][k] = "";
+				}
+			}
+		}
 		}
 };
 
@@ -789,6 +789,7 @@ int main()
 	
 	string answer;
 	James Jam;
+	Nick Nic;
 	
 	cout<<"Welcome to Tic-Tac-Toe"<<endl;
 	cout<<"Would you like to play a tournament? Y/N"<<endl;
@@ -796,21 +797,24 @@ int main()
 	
 	while(answer != "N" || answer != "n")
 	{
-		//Plays a tournament
-		while(GameNumber != 10)
-		{
 			srand((unsigned)time(0));
 			P1 = (rand() % 2);
-			
+		//Plays a tournament
+		while(GameNumber != 11)
+		{
 			cout<<"Game "<<GameNumber<<" being played."<<endl;
+			Play = 1;
 
 				if(P1 == 0)
 				{
 					cout << "NickAi goes first!" << endl;
 					while (Play != 27)
 					{
-						Jam.nickAi(nickSymbol);
+						cout << "Play " << Play << endl;
+						Nic.AiTurn();
+						Jam.convert();
 						Play++;
+						cout << "Play " << Play << endl;
 						Jam.jamesAi(jamesSymbol);
 						Play++;
 					}
@@ -821,23 +825,26 @@ int main()
 					cout<<"JamesAi goes first!" <<endl;
 					while(Play != 27)
 					{
+						cout << "Play " << Play << endl;
 						Jam.jamesAi(jamesSymbol);
 						Play++;
-						Jam.nickAi(nickSymbol);
+						cout << "Play " << Play << endl;
+						Nic.AiTurn();
+						Jam.convert();
 						Play++;
 					}
 				}
 			cout << "Test" << endl;
 			//Checks both Ai's symbols and returns a winner of the game
-			Jam.check_jamesAiwin(JamesWin);
-			//Jam.check_nickAiwin(NickWin, nickSymbol);
-			Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
+			Jam.check_AiScore();
+			Jam.Winner();
+			Jam.Erase();
 			cout<<"Game " << GameNumber << " Over"<<endl;
-			Play = 0;
+			GameNumber++;
 		}
 	}
 	cout<<"Tournament finished"<<endl;
-	Jam.Victor(NickWin, JamesWin);
+	Jam.Victor();
 
 	return 0;
 }
