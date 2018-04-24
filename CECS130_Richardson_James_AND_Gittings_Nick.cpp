@@ -8,25 +8,14 @@ using namespace std;
 class Nick
 {
 	public:
-		string nickAiSymbol = "X";
 	
-		void nickAi(string nickAiSymbol, int GameCounter)
+		void nickAi(string nickAiSymbol)
 		{
 			bool bnickAiChoosing = true;
-
-			cout << "NickAi's turn" << endl;
 
 			do
 			{
 				int i = (rand() % 3);
-				int j = (rand() % 3);
-				int k = (rand() % 3);
-
-				if(Cells[i][j][k] != nickAiSymbol && Cells[i][j][k] != "O")
-				{
-					Cells[i][j][k] = nickAiSymbol;
-					bnickAiChoosing = false;
-				}
 			}while(bnickAiChoosing == true);
 		}
 };
@@ -52,7 +41,7 @@ class James : public Nick
 			
 		}
 
-		void jamesAi(jamesAiSymbol)
+		void jamesAi(string jamesAiSymbol)
 		{
 				while(x != 1)
 				{
@@ -256,7 +245,7 @@ class James : public Nick
 				}
 			x = 0;
 		}
-		void check_jamesAiwin()
+		void check_jamesAiwin(int JamesScore)
 		{
 			if((A1 == "X" || A1 == "O")&& A1 == A2 && A2 == A3 && z1 != 1)
 			{
@@ -649,9 +638,9 @@ class James : public Nick
 				}
 			}
 		}
-
+		
 		// Checks Nick Ai wins with for loop through arrays
-		void check_nickAiwin()
+		/*void check_nickAiwin(int inickAiWinCounter, string nickAiSymbol)
 		{
 			int i,j,k;
 
@@ -698,34 +687,34 @@ class James : public Nick
 			{
 				inickAiWinCounter++;
 			}
-		}
+		}*/
 
 		//Checks winner of each game
 		void Winner(int aicounter1, int aicounter2, int aiwin1, int aiwin2, int GameCounter)
 		{
 			if(aicounter1 > aicounter2)
 			{
-				cout << "NickAi Wins" << endl;	
-				aiwin1++
+				cout << "Nick Wins" << endl;	
+				aiwin1++;
 			}
 			else
 			{
-				cout << "JamesAi Wins" << endl;
-				aiwin2++
+				cout << "James Wins" << endl;
+				aiwin2++;
 			}
-			GameCounter++
+			GameCounter++;
 		}
 		
 		//Checks winner of 10 games
-		void Victor(int aicounter1, int aicounter2)
+		void Victor(int aiwins1, int aiwins2)
 		{
-			if(aicounter1 > aicounter2)
+			if(aiwins1 > aiwins2)
 			{
-				cout<<"Nick wins the tournament "<<NickWin<<"to "<<JamesWin<<endl;
+				cout<<"Nick wins the tournament "<< aiwins1 <<"to "<< aiwins2 <<endl;
 			}
-			else if(aicounter2 > aicounter1)
+			else if(aiwins2 > aiwins1)
 			{
-				cout<<"James wins the tournament "<<JamesWin<<"to "<<NickWin<<endl;
+				cout<<"James wins the tournament "<< aiwins2 <<"to "<< aiwins1 <<endl;
 			}
 			else
 			{
@@ -740,6 +729,8 @@ int main()
 	int JamesScore = 0; 
 	int NickScore = 0;
 	int P1,Play,GameNumber = 1;
+	string nickSymbol = "X";
+	string jamesSymbol = "O";
 	
 	string answer;
 	James Jam;
@@ -757,30 +748,34 @@ int main()
 			P1 = (rand() % 2);
 			
 			cout<<"Game "<<GameNumber<<" being played."<<endl;
-			//Plays a game	
-			while (Play != 27)
-			{
+
 				if(P1 == 0)
 				{
 					cout << "NickAi goes first!" << endl;
-					Jam.nickAi();
-					Play++;
-					Jam.jamesAi();
-					Play++;
+					while (Play != 27)
+					{
+						Jam.nickAi(nickSymbol);
+						Play++;
+						Jam.jamesAi(jamesSymbol);
+						Play++;
+					}
 				}
 			
 				if(P1 == 1)
 				{
 					cout<<"JamesAi goes first!" <<endl;
-					Jam.jamesAi();
-					Play++;
-					Jam.nickAi();
-					Play++;
+					while(Play != 27)
+					{
+						Jam.jamesAi(jamesSymbol);
+						Play++;
+						Jam.nickAi(nickSymbol);
+						Play++;
+					}
 				}
-			}
+			cout << "Test" << endl;
 			//Checks both Ai's symbols and returns a winner of the game
-			Jam.check_jamesAiwin();
-			Jam.check_nickAiwin();
+			Jam.check_jamesAiwin(JamesWin);
+			//Jam.check_nickAiwin(NickWin, nickSymbol);
 			Jam.Winner(NickScore, JamesScore, NickWin, JamesWin, GameNumber);
 			cout<<"Game " << GameNumber << " Over"<<endl;
 			Play = 0;
