@@ -18,6 +18,61 @@ class Nick
 				int i = (rand() % 3);
 			}while(bnickAiChoosing == true);
 		}
+	void game::ai_turn(string AiSymbol)
+{
+	string ai_choice;
+	bool bAiChoosing = true;
+	
+	cout << "Ai's turn" << endl;
+	
+	//Ai choses random string in array Cells to check if used and if not then repeats random till one is found
+	do
+	{
+		int i = (rand() % 3);
+		int j = (rand() % 3);
+		int k = (rand() % 3);
+
+		//Change to your nasty strings ill just use random cuz im too lazy to actually make true ai
+		if(Cells[i][j][k] != PlayerSymbol && Cells[i][j][k] != AiSymbol)
+		{
+			Cells[i][j][k] = AiSymbol;
+			bAiChoosing = false;
+		}
+	}while(bAiChoosing == true);
+	iTurnCounter++;
+}		
+};
+class converter : public Nick // converts arrays into strings
+{
+	void converter(){
+	A1 = Cells[0][0][0];
+	A2 = Cells[1][0][0];
+	A3 = Cells[2][0][0];
+	B1 = Cells[0][1][0];
+	B2 = Cells[1][1][0];
+	B3 = Cells[2][1][0];
+	C1 = Cells[0][2][0];
+	C2 = Cells[1][2][0];
+	C3 = Cells[2][2][0];
+	D4 = Cells[0][0][1];
+	D5 = Cells[1][0][1];
+	D6 = Cells[2][0][1];
+	E4 = Cells[0][1][1];
+	E5 = Cells[1][1][1];
+	E6 = Cells[2][1][1];
+	F4 = Cells[0][2][1];
+	F5 = Cells[1][2][1];
+	F6 = Cells[2][2][1];
+	G7 = Cells[0][0][2];
+	G8 = Cells[1][0][2];
+	G9 = Cells[2][0][2];
+	H7 = Cells[0][1][2];
+	H8 = Cells[1][1][2];
+	H9 = Cells[2][1][2];
+	I7 = Cells[0][2][2];
+	I8 = Cells[1][2][2];
+	I9 = Cells[2][2][2];
+	}
 };
 
 //Inheriting Partner's Class
