@@ -98,7 +98,7 @@ class James : public Nick
 			I9 = Cells[2][2][2];
 		}
 		
-		void jamesAi(string jamesAiSymbol)
+		void jamesAi(string jamesSymbol)
 		{
 				while(x != 1) // James Ai
 				{
@@ -114,188 +114,188 @@ class James : public Nick
 							case 1:
 								if(A1.empty())
 								{
-									A1 = jamesAiSymbol;
+									A1 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 2: 
 								if(A2.empty())
 								{
-									A2 = jamesAiSymbol;
+									A2 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 3:
 								if(A3.empty())
 								{
-									A3 = jamesAiSymbol;
+									A3 = jamesSymbol;
 									x = 1;
 									break;
 							}
 							case 4: 
 								if(B1.empty())
 								{
-									B1 = jamesAiSymbol;
+									B1 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 5:
 								if(B2.empty())
 								{
-									B2 = jamesAiSymbol;
+									B2 = jamesSymbol;
 									x = 1;
 									break;
 								}	
 							case 6:
 								if(B3.empty()){
-									B3 = jamesAiSymbol;
+									B3 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 7:
 								if(C1.empty())
 								{
-									C1 = jamesAiSymbol;
+									C1 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 8:
 								if(C2.empty())
 								{
-									C2 = jamesAiSymbol;
+									C2 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 9:
 								if(C3.empty())
 								{
-									C3 = jamesAiSymbol;
+									C3 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 10:
 								if(D4.empty())
 								{
-									D4 = jamesAiSymbol;
+									D4 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 11:
 								if(D5.empty())
 								{
-									D5 = jamesAiSymbol;
+									D5 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 12:
 								if(D6.empty())
 								{
-									D6 = jamesAiSymbol;
+									D6 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 13:
 								if(E4.empty())
 								{
-									E4 = jamesAiSymbol;
+									E4 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 14:
 								if(E5.empty())
 								{
-									E5 = jamesAiSymbol;
+									E5 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 15:
 								if(E6.empty())
 								{
-									E6 = jamesAiSymbol;
+									E6 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 16:
 								if(F4.empty())
 								{
-									F4 = jamesAiSymbol;
+									F4 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 17:
 								if(F5.empty())
 								{
-									F5 = jamesAiSymbol;
+									F5 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 18:
 								if(F6.empty())
 								{
-									F6 = jamesAiSymbol;
+									F6 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 19:
 								if(G7.empty())
 								{
-									G7 = jamesAiSymbol;
+									G7 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 20:
 								if(G8.empty())
 								{
-									G8 = jamesAiSymbol;
+									G8 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 21:
 								if(G9.empty())
 								{
-									G9 = jamesAiSymbol;
+									G9 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 22:
 								if(H7.empty())
 								{
-									H7 = jamesAiSymbol;
+									H7 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 23:
 								if(H8.empty())
 								{
-									H8 = jamesAiSymbol;
+									H8 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 24:
 								if(H9.empty())
 								{
-									H9 = jamesAiSymbol;
+									H9 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 25:
 								if(I7.empty())
 								{
-									I7 = jamesAiSymbol;
+									I7 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 26:
 								if(I8.empty())
 								{
-									I8 = jamesAiSymbol;
+									I8 = jamesSymbol;
 									x = 1;
 									break;
 								}
 							case 27:
 								if(I9.empty())
 								{
-									I9 = jamesAiSymbol;
+									I9 = jamesSymbol;
 									x = 1;
 									break;
 								}
@@ -1013,6 +1013,22 @@ class James : public Nick
 				}
 			}
 		}
+		void show_O(string nickSymbol)
+		{
+			for(k = 0; k < 3; k++)
+			{
+				for(j = 0; j < 3; j++)
+				{
+					for(i = 0; i < 3; i++)
+					{
+						if(Cells[i][j][k] != nickSymbol)
+						{
+						Cells[i][j][k] = "O";
+						}
+					}
+				}
+			}
+		}
 };
 
 int main()
@@ -1065,6 +1081,7 @@ int main()
 				}
 				
 			//Checks both Ai's symbols and returns a winner of the game
+			Jam.show_O(nickSymbol);
 			Jam.converter();
 			Jam.check_AiScore();
 			Jam.Winner();
