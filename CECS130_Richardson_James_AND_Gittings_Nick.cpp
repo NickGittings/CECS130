@@ -57,10 +57,13 @@ class James : public Nick
 			cout << B1 << "\t" << B2 << "\t" << B3 << endl;
 			cout << C1 << "\t" << C2 << "\t" << C3 << endl;
 			
+			cout << endl;
+			
 			cout << D4 << "\t" << D5 << "\t" << D6 << endl;
 			cout << E4 << "\t" << E5 << "\t" << E6 << endl;
 			cout << F4 << "\t" << F5 << "\t" << F6 << endl;
 			
+			cout << endl;
 			
 			cout << G7 << "\t" << G8 << "\t" << G9 << endl;
 			cout << H7 << "\t" << H8 << "\t" << H9 << endl;
@@ -947,13 +950,17 @@ class James : public Nick
 		{
 			if(NickScore > JamesScore)
 			{
-				cout << "Nick Wins" << endl;	
+				cout << "Nick Wins!" << endl;	
 				NickWin++;
 			}
-			else
+			else if(JamesScore > NickScore)
 			{
-				cout << "James Wins" << endl;
+				cout << "James Wins!" << endl;
 				JamesWin++;
+			}
+			else if (JamesScore == NickScore)
+			{
+				cout << "Tie!" << endl;
 			}
 		}
 		
@@ -968,8 +975,12 @@ class James : public Nick
 			{
 				cout<<"James wins the tournament "<< JamesWin <<" to "<< NickWin <<endl;
 			}
+			else if(JamesWin == NickWin)
+			{
+				cout << "Tie " << NickWin <<" to "<< JamesWin <<endl; 
+			}
 		}
-		
+		//Clears strings
 		void Erase()
 		{
 			int i,j,k;
@@ -1033,6 +1044,7 @@ class James : public Nick
 
 int main()
 {
+	bool Playing = false;
 	int P1,Play,GameNumber = 1;
 	string nickSymbol = "X";
 	string jamesSymbol = "O";
@@ -1044,7 +1056,12 @@ int main()
 	cout<<"Would you like to play a tournament? Y/N"<<endl;
 	cin>>answer;
 	
-	while(answer != "N" || answer != "n")
+	if(answer == "Y" || answer == "y")
+	{
+		Playing = true;
+	}
+	
+	while(Playing == true)
 	{	
 		//Plays a tournament
 		while(GameNumber != 11)
@@ -1084,19 +1101,21 @@ int main()
 			Jam.show_O(nickSymbol);
 			Jam.converter();
 			Jam.check_AiScore();
-			Jam.Winner();
 			Jam.create_board();
-			cout << Jam.NickScore << "    " << Jam.JamesScore << endl;
+			Jam.Winner();
 			Jam.Erase();
 			cout<<"Game " << GameNumber << " Over"<<endl;
 			GameNumber++;
 			system("PAUSE");
 		}
+		//Checks win counter of both players and shows winner
 		cout<<"Tournament finished"<<endl;
 		Jam.Victor();
 		system("PAUSE");
+		//Resets Win Counters
 		Jam.JamesWin = 0;
 		Jam.NickWin = 0;
+		Playing = false;
 	}
 	
 
