@@ -4,6 +4,11 @@
 #include <time.h>
 using namespace std;
 
+/*
+Nick Gittings Section 1
+Michael Richardson Section 
+*/
+
 
 
 //Partner's Class
