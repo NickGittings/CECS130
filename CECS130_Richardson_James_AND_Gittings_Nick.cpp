@@ -39,72 +39,14 @@ class Nick
 		}		
 };
 
-//Inheriting Partner's Class
-class James : public Nick
+class James 
 {
 	public:
-
 		int Play,P1,Cchoice,Pchoice,End,x,confused;
 		
 		string A1;string A2;string A3;string B1;string B2;string B3;string C1;string C2;string C3;string D4;string D5;
 		string D6;string E4;string E5;string E6;string F4;string F5;string F6;
 		string G7; string G8; string G9;string H7; string H8; string H9;string I7; string I8; string I9;string Quad;
-
-		int z1,z2,z3,z4,z5,z6,z7,z8,z9,z10,z11,z12,z13,z14,z15,z16,z17,z18,z19,z20,z21,z22,z23,z24,z25,z26,z27,z28,z29,z30,z31,z32,z33,z34,z35,z36,z37,z38,z39,z40,z41,z42,z43,z44,z45,z46,z47,z48,z49;
-		int JamesScore = 0;
-		int JamesWin = 0;
-		int NickScore = 0;
-		int NickWin = 0;
-		
-		void create_board()
-		{
-			cout << A1 << "\t" << A2 << "\t" << A3 << endl;
-			cout << B1 << "\t" << B2 << "\t" << B3 << endl;
-			cout << C1 << "\t" << C2 << "\t" << C3 << endl;
-			
-			cout << endl;
-			
-			cout << D4 << "\t" << D5 << "\t" << D6 << endl;
-			cout << E4 << "\t" << E5 << "\t" << E6 << endl;
-			cout << F4 << "\t" << F5 << "\t" << F6 << endl;
-			
-			cout << endl;
-			
-			cout << G7 << "\t" << G8 << "\t" << G9 << endl;
-			cout << H7 << "\t" << H8 << "\t" << H9 << endl;
-			cout << I7 << "\t" << I8 << "\t" << I9 << endl;
-		}
-		
-		void converter()
-		{
-			A1 = Cells[0][0][0];
-			A2 = Cells[1][0][0];
-			A3 = Cells[2][0][0];
-			B1 = Cells[0][1][0];
-			B2 = Cells[1][1][0];
-			B3 = Cells[2][1][0];
-			C1 = Cells[0][2][0];
-			C2 = Cells[1][2][0];
-			C3 = Cells[2][2][0];
-			D4 = Cells[0][0][1];
-			D5 = Cells[1][0][1];
-			D6 = Cells[2][0][1];
-			E4 = Cells[0][1][1];
-			E5 = Cells[1][1][1];
-			E6 = Cells[2][1][1];
-			F4 = Cells[0][2][1];
-			F5 = Cells[1][2][1];
-			F6 = Cells[2][2][1];
-			G7 = Cells[0][0][2];
-			G8 = Cells[1][0][2];
-			G9 = Cells[2][0][2];
-			H7 = Cells[0][1][2];
-			H8 = Cells[1][1][2];
-			H9 = Cells[2][1][2];
-			I7 = Cells[0][2][2];
-			I8 = Cells[1][2][2];
-			I9 = Cells[2][2][2];
-		}
 		
 		void jamesAi(string jamesSymbol)
 		{
@@ -311,6 +253,73 @@ class James : public Nick
 				}
 			x = 0;
 		}
+};
+
+//Inheriting from both our classes
+class Competition : public Nick, public James
+{
+	public:
+
+		int z1,z2,z3,z4,z5,z6,z7,z8,z9,z10,z11,z12,z13,z14,z15,z16,z17,z18,z19,z20,z21,z22,z23,z24,z25,z26,z27,z28,z29,z30,z31,z32,z33,z34,z35,z36,z37,z38,z39,z40,z41,z42,z43,z44,z45,z46,z47,z48,z49;
+		int JamesScore = 0;
+		int JamesWin = 0;
+		int NickScore = 0;
+		int NickWin = 0;
+		int Ties = 0;
+		
+		//Creates board
+		void create_board()
+		{
+			cout << A1 << "\t" << A2 << "\t" << A3 << endl;
+			cout << B1 << "\t" << B2 << "\t" << B3 << endl;
+			cout << C1 << "\t" << C2 << "\t" << C3 << endl;
+			
+			cout << endl;
+			
+			cout << D4 << "\t" << D5 << "\t" << D6 << endl;
+			cout << E4 << "\t" << E5 << "\t" << E6 << endl;
+			cout << F4 << "\t" << F5 << "\t" << F6 << endl;
+			
+			cout << endl;
+			
+			cout << G7 << "\t" << G8 << "\t" << G9 << endl;
+			cout << H7 << "\t" << H8 << "\t" << H9 << endl;
+			cout << I7 << "\t" << I8 << "\t" << I9 << endl;
+		}
+		
+		//Converts arrays from Nick class to strings of James class
+		void converter()
+		{
+			A1 = Cells[0][0][0];
+			A2 = Cells[1][0][0];
+			A3 = Cells[2][0][0];
+			B1 = Cells[0][1][0];
+			B2 = Cells[1][1][0];
+			B3 = Cells[2][1][0];
+			C1 = Cells[0][2][0];
+			C2 = Cells[1][2][0];
+			C3 = Cells[2][2][0];
+			D4 = Cells[0][0][1];
+			D5 = Cells[1][0][1];
+			D6 = Cells[2][0][1];
+			E4 = Cells[0][1][1];
+			E5 = Cells[1][1][1];
+			E6 = Cells[2][1][1];
+			F4 = Cells[0][2][1];
+			F5 = Cells[1][2][1];
+			F6 = Cells[2][2][1];
+			G7 = Cells[0][0][2];
+			G8 = Cells[1][0][2];
+			G9 = Cells[2][0][2];
+			H7 = Cells[0][1][2];
+			H8 = Cells[1][1][2];
+			H9 = Cells[2][1][2];
+			I7 = Cells[0][2][2];
+			I8 = Cells[1][2][2];
+			I9 = Cells[2][2][2];
+		}
+		
+		
 		void check_AiScore() //Give points
 		{
 			if((A1 == "X" || A1 == "O")&& A1 == A2 && A2 == A3 && z1 != 1)
@@ -966,6 +975,7 @@ class James : public Nick
 			else if (JamesScore == NickScore)
 			{
 				cout << "Tie!" << endl;
+				Ties++;
 			}
 		}
 		
@@ -974,15 +984,15 @@ class James : public Nick
 		{
 			if(NickWin > JamesWin)
 			{
-				cout<<"Nick wins the tournament "<< NickWin <<" to "<< JamesWin <<endl;
+				cout<<"Nick wins the tournament "<< NickWin <<" to "<< JamesWin << ". There were " << Ties << " ties." << endl; 
 			}
 			else if(JamesWin > NickWin)
 			{
-				cout<<"James wins the tournament "<< JamesWin <<" to "<< NickWin <<endl;
+				cout<<"James wins the tournament "<< JamesWin <<" to "<< NickWin << ". There were " << Ties << " ties." << endl; 
 			}
 			else if(JamesWin == NickWin)
 			{
-				cout << "Tie " << NickWin <<" to "<< JamesWin <<endl; 
+				cout << "Tie " << NickWin <<" to "<< JamesWin << ". There were " << Ties << " ties." << endl; 
 			}
 		}
 		//Clears strings
@@ -1029,6 +1039,7 @@ class James : public Nick
 				}
 			}
 		}
+		//Stores James symbol in the array before conversion
 		void show_O(string nickSymbol)
 		{
 			for(k = 0; k < 3; k++)
@@ -1055,7 +1066,7 @@ int main()
 	string jamesSymbol = "O";
 	
 	string answer;
-	James Jam;
+	Competition Jam;
 	
 	cout<<"Welcome to Tic-Tac-Toe"<<endl;
 	cout<<"Would you like to play a tournament? Y/N"<<endl;
