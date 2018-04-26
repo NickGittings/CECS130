@@ -6,7 +6,7 @@ using namespace std;
 
 /*
 Nick Gittings Section 1
-Michael Richardson Section 
+Michael Richardson Section 1 
 */
 
 
